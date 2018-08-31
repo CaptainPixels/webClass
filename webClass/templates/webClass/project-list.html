@@ -1,0 +1,27 @@
+{% extends 'webClass/base.html' %}
+{% block content %}
+
+<div class="background">
+  <div class="foreground">
+    <div class="foreground-tag">
+      <h4 style="margin:0;">projects</h4>
+    </div>
+    <div class="foreground-body">
+      <div class="foreground-body-inner">
+        {% for project in projects %}
+          {% if project.id != 0 %}
+            <a class="foreground-element" href='/webClass/projects/{{ project.id }}'><grey>{{ project.id }}:</grey> {{ project.name }}</a><br/>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-text" align="right">
+  port forwarding: <a href="https://ngrok.com/">ngrok</a><br />
+  middleware: <a href="https://www.djangoproject.com/">django 2.1</a><br />
+  styles: <a href="https://bootswatch.com/lux/">bootswatch lux</a>, <a href="https://semantic-ui.com/">semantic ui</a><br />
+</div>
+
+{% endblock %}
