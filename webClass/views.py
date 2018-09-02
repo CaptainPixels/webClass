@@ -15,9 +15,6 @@ def project(req, pk):
     return render(req, 'webClass/project-'+str(pk)+'/index.html', {'project':{'name':Projects.objects.get(pk=pk).name,'id':pk}})
 
 class api():
-    def csrf(req):
-        csrf.get_token(req)
-        return render(req, 'webClass/base.html')
     class project():
         def add(req):
             if req.method == 'POST':
