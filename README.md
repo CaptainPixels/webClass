@@ -11,4 +11,4 @@ webClass/static/webClass/project-x/css<br>
 JS:<br>
 webClass/static/webClass/project-x/js<br>
 
-note: project-0 files are base files/templates so that the api can quicly generate new projects
+note: project-0 files are base files/templates so that the api can quickly generate new projects
