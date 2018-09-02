@@ -5,11 +5,7 @@
 }
 
 body {
-  min-width: 400px;
-
   background-color: #f7f7f9;
-  display: flex;
-  flex-direction: column;
 }
 body black {
   color: black;
@@ -18,13 +14,20 @@ body grey {
   color: #919aa1;
 }
 
-.background {
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pl-background {
   height: calc(100vh - var(--info-height));
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
-.foreground {
+.pl-foreground {
   width: 100%;
   margin-top: calc(19.098300562vh - var(--tag-height));
   margin-bottom: calc(19.098300562vh - var(--info-height));
@@ -32,11 +35,16 @@ body grey {
   margin-right: 19.098300562vw;
 }
 
-.foreground-tag {
+.pl-foreground-tag-top {
   margin-left: 20%;
 }
 
-.foreground-body {
+.pl-foreground-tag-bottom {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pl-foreground-body {
   height: calc(100% - var(--tag-height));
 
   border-color: black;
@@ -44,17 +52,73 @@ body grey {
   border-style: solid;
 }
 
-.foreground-body-inner {
+.pl-foreground-body-inner {
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
 }
 
-.foreground-element {
+.pl-foreground-element {
   margin: 5px;
 }
 
-.bottom-text {
+.pl-bottom-text {
   margin-right: 20px;
   margin-bottom: 20px;
+}
+
+.code-title {
+  width: 20%;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.code {
+  color: white;
+  background-color: black;
+}
+
+.zero {
+  margin: 0;
+}
+
+.pl-desc {
+  text-align: center;
+  width: 252.5px;
+  margin-right: 10%;
+}
+
+.pl-desc-bp {
+  display: none;
+}
+
+@media only screen and (max-height: 535px) {
+  .pl-bottom-text {
+      display: none;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  .pl-desc {
+      display: none;
+  }
+  .pl-desc-bp {
+    display: inline;
+  }
+  .pl-foreground-tag-bottom {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 328px) {
+  .pl-foreground-tag-top {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .pl-bottom-text {
+      display: none;
+  }
 }

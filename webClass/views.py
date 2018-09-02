@@ -14,19 +14,33 @@ def list(req):
 def project(req, pk):
     return render(req, 'webClass/project-'+str(pk)+'/index.html', {'project':{'name':Projects.objects.get(pk=pk).name,'id':pk}})
 
+def projectApi(req):
+    return render(req, 'webClass/api.html')
+
 class api():
+    def csrf(req):
+        # if req.method == 'POST':
+        #     form = csrfForm(req.POST)
+        #     if form.is_valid():
+        #         username = form.cleaned_data['name']
+        #         password = form.cleaned_data['password']
+        csrf.get_token(req)
+        return render(req, 'webClass/base.html')
     class project():
+
         def add(req):
             if req.method == 'POST':
                 form = ProjectForm(req.POST)
                 if form.is_valid():
                     #get form data
                     projName = form.cleaned_data['name']
+                    desc = form.cleaned_data['desc']
                     #test for a duplicate entry
                     try:
                         #add object to database
                         Projects.objects.create(
-                            name = projName
+                            name = projName,
+                            desc = desc
                         ).save()
                     except IntegrityError:
                         #return fail for duplicate object
@@ -36,11 +50,26 @@ class api():
                     #return success
                     os.system('cp -r /Users/edit/Documents/web/djangoServer/webClass/static/webClass/project-0 /Users/edit/Documents/web/djangoServer/webClass/static/webClass/project-'+str(proj.id))
                     os.system('cp -r /Users/edit/Documents/web/djangoServer/webClass/templates/webClass/project-0 /Users/edit/Documents/web/djangoServer/webClass/templates/webClass/project-'+str(proj.id))
-                    return JsonResponse({'success':True,'name':proj.name,'id':proj.id})
+                    return JsonResponse({'success':True,'id':proj.id,'name':proj.name,'desc':proj.desc})
                 #return fail for bad form
                 return JsonResponse({'success':False,'reason':'invalid form'})
             #return redirect if GET
             return HttpResponseRedirect('/webClass/projects')
+
+        def setdesc(req):
+            if req.method == 'POST':
+                form = SetDescForm(req.POST)
+                if form.is_valid():
+                    projName = form.cleaned_data['name']
+                    newDesc = form.cleaned_data['desc']
+                    try:
+                        proj = Projects.objects.get(name=projName)
+                    except Projects.DoesNotExist:
+                        return JsonResponse({'success':False,'reason':'name does not exist'})
+                    proj.desc = newDesc
+                    proj.save()
+                    return JsonResponse({'success':True})
+                return JsonResponse({'success':False,'reason':'invalid form'})
 
         def setid(req):
             if req.method == 'POST':
@@ -71,7 +100,7 @@ class api():
 
         def delete(req):
             if req.method == 'POST':
-                form = ProjectForm(req.POST)
+                form = DeleteForm(req.POST)
                 if form.is_valid():
                     projName = form.cleaned_data['name']
                     try:
@@ -96,3 +125,7 @@ class api():
                     os.system('rm -rf /Users/edit/Documents/web/djangoServer/webClass/archived/'+ projId)
                     return JsonResponse({'success':True})
                 return JsonResponse({'success':False,'reason':'invalid form'})
+    class atlas():
+        def lights(req):
+            if req.method == 'POST':
+                form = LightsForm

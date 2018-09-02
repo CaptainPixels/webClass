@@ -1,27 +1,49 @@
 {% extends 'webClass/base.html' %}
 {% block content %}
 
-<div class="background">
-  <div class="foreground">
-    <div class="foreground-tag">
-      <h4 style="margin:0;">projects</h4>
-    </div>
-    <div class="foreground-body">
-      <div class="foreground-body-inner">
-        {% for project in projects %}
-          {% if project.id != 0 %}
-            <a class="foreground-element" href='/webClass/projects/{{ project.id }}'><grey>{{ project.id }}:</grey> {{ project.name }}</a><br/>
-          {% endif %}
-        {% endfor %}
+<div class="project-list">
+  <div class="pl-background">
+    <div class="pl-foreground">
+      <div class="pl-foreground-tag-top">
+        <h4 class="zero">projects</h4>
+      </div>
+      <div class="pl-foreground-body">
+        <div class="pl-foreground-body-inner">
+          {% for project in projects %}
+            {% if project.id != 0 %}
+              <a class="pl-foreground-element" onmouseover="hoverIn('{{ project.desc }}')" onmouseout="hoverOut()" href='{{ project.id }}'><grey>{{ project.id }}:</grey> {{ project.name }}</a><br/>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="pl-foreground-tag-bottom">
+        <div class="pl-desc" id="desc">
+          <a href="api">api</a> / <a href="https://github.com/CaptainPixels/webClass/">github</a>
+        </div>
+        <div class="pl-desc-bp">
+          <a href="api">api</a> / <a href="https://github.com/CaptainPixels/webClass/">github</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="pl-bottom-text" align="right">
+    port forwarding: <a href="https://ngrok.com/">ngrok</a><br />
+    middleware: <a href="https://www.djangoproject.com/">django 2.1</a><br />
+    styles: <a href="https://bootswatch.com/lux/">bootswatch lux</a>, <a href="https://semantic-ui.com/">semantic ui</a><br />
+  </div>
 </div>
 
-<div class="bottom-text" align="right">
-  port forwarding: <a href="https://ngrok.com/">ngrok</a><br />
-  middleware: <a href="https://www.djangoproject.com/">django 2.1</a><br />
-  styles: <a href="https://bootswatch.com/lux/">bootswatch lux</a>, <a href="https://semantic-ui.com/">semantic ui</a><br />
-</div>
+<script>
+
+function hoverIn(desc) {
+  document.getElementById("desc").innerHTML = desc;
+}
+
+function hoverOut() {
+  document.getElementById("desc").innerHTML = '<a href="api">api</a> / <a href="https://github.com/CaptainPixels/webClass/">github</a>';
+}
+
+</script>
 
 {% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'webClass/base.html' %}
+{% block content %}
+
+<div class="jumbotron">
+  <h1 class="display-3">api documentation</h1>
+
+  <hr class="my-4" />
+  <h1 class="display-5">/add-project</h1>
+  <p class="lead">add a project folder and database entry</p>
+  <h4 class="display-6">headers</h4>
+  <pre class="code">X-CSRFToken : &lt; csrf token &gt;</pre>
+  <h4 class="display-6">body</h4>
+  <pre class="code">name : &lt; new project name &gt;<br />desc : &lt; new project description &gt;</pre>
+
+  <hr class="my-4" />
+  <h1 class="display-5">/set-desc</h1>
+  <p class="lead">changes the description of a project</p>
+  <h4 class="display-6">headers</h4>
+  <pre class="code">X-CSRFToken : &lt; csrf token &gt;</pre>
+  <h4 class="display-6">body</h4>
+  <pre class="code">name : &lt; project name &gt;<br />desc : &lt; new project description &gt;</pre>
+
+  <hr class="my-4" />
+  <h1 class="display-5">/set-id</h1>
+  <p class="lead">changes the id of a project</p>
+  <h4 class="display-6">headers</h4>
+  <pre class="code">X-CSRFToken : &lt; csrf token &gt;</pre>
+  <h4 class="display-6">body</h4>
+  <pre class="code">name : &lt; project name &gt;<br />id : &lt; new project id &gt;</pre>
+
+  <hr class="my-4" />
+  <h1 class="display-5">/delete-project</h1>
+  <p class="lead">sends a project to the 'archived' file</p>
+  <h4 class="display-6">headers</h4>
+  <pre class="code">X-CSRFToken : &lt; csrf token &gt;</pre>
+  <h4 class="display-6">body</h4>
+  <pre class="code">name : &lt; project name &gt;</pre>
+
+  <hr class="my-4" />
+  <h1 class="display-5">/clear-archive</h1>
+  <p class="lead">deletes a file from the 'archived' folder<br />note: setting 'id' to 'all' will clear the whole archive</p>
+  <h4 class="display-6">headers</h4>
+  <pre class="code">X-CSRFToken : &lt; csrf token &gt;</pre>
+  <h4 class="display-6">body</h4>
+  <pre class="code">id : &lt; project id &gt;</pre>
+
+  <hr class="my-4" />
+  <p class="lead">notes:<br />all endpoints are formatted as &lt; base url &gt;/webClass/api/&lt; endpoint &gt;<br />all endpoints require an x-csrf token which can be provided upon request</p>
+
+</div>
+
+{% endblock %}
