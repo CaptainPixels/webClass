@@ -18,15 +18,6 @@ def projectApi(req):
     return render(req, 'webClass/api.html')
 
 class api():
-    def csrf(req):
-        # if req.method == 'POST':
-        #     form = csrfForm(req.POST)
-        #     if form.is_valid():
-        #         username = form.cleaned_data['name']
-        #         password = form.cleaned_data['password']
-        # DJANGO AUTHHH
-        csrf.get_token(req)
-        return render(req, 'webClass/base.html')
     class project():
 
         def add(req):
