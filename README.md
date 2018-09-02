@@ -3,7 +3,7 @@ my django code for my web class, which does not include the master files for sec
 
 note: the api calls require access to csrf tokens, so lmk if you want access
 
-# teachers:
+# teachers
 HTML:<br>
 webClass/templates/webClass/project-x<br>
 CSS:<br>
