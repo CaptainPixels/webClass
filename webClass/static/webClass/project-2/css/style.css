@@ -1,0 +1,33 @@
+body {
+  background-color: #f7f7f9;
+  min-width: 500px;
+  min-height: 300px;
+}
+
+.background {
+  display: flex;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  height: 100vh;
+}
+
+.main {
+  margin: 0 !important;
+  margin-bottom: 36px !important;
+}
+
+.full {
+  width: 100%;
+}
+
+.title {
+  margin: 0;
+  margin-left: 20%;
+
+}

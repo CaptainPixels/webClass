@@ -1,0 +1,34 @@
+{% extends 'webClass/project-2/base.html' %}
+{% block content %}
+
+<div class="background">
+  <div class="center">
+
+    <h1 class="title">about me</h1>
+    <div class="ui raised segment main">
+      My name is Corbin Peters. I like 3D modeling, making websites, and playing tennis. My experience in web comes from a couple internships I have had. I first learned HTML and CSS when I was a UI/UX designer for a college counceling webapp. Later, I was hired by a fintech company to do some documentation work for their RESTful API. I started out by making a Postman collection with all of the endpoints, and further on, I made a fully fledged financial aggregation app.<br /><br />
+
+      <button class="ui animated linkedin button full" onclick="linkedIn()">
+        <div class="visible content">
+          <i class="linkedin icon"></i>
+          LinkedIn
+        </div>
+        <div class="hidden content">
+          <i class="chain icon"></i>
+        </div>
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+function linkedIn() {
+  window.location.href = 'https://www.linkedin.com/in/corbin-peters-62319b152';
+}
+
+</script>
+
+{% endblock %}

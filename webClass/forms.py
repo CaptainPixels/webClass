@@ -1,5 +1,9 @@
 from django import forms
 
+class csrfForm(forms.Form):
+    username = forms.CharField(max_length=200)
+    passowrd = forms.CharField(max_length=200)
+
 class ProjectForm(forms.Form):
     name = forms.CharField(max_length=200)
     desc = forms.CharField(max_length=30)
